@@ -23,16 +23,16 @@ let intersected_segments = [];
 function update() {
     calculate();
     clear();
-    if (coefficients.draw_path) draw_path();
+    draw_path();
     draw_intersections();
-    // draw_max_radius();
-    // draw_min_radius();
-    // draw_origin_radius();
-    // draw_epicenter_stroke();
+    draw_max_radius();
+    draw_min_radius();
+    draw_origin_radius();
+    draw_epicenter_stroke();
     draw_epicenter();
     draw_donut();
     draw_points();
-    // highlight_bad_points()
+    highlight_bad_points()
 };
 
 function dist(a, b) {
