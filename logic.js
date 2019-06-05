@@ -11,19 +11,19 @@ let close_point = {x: 0, y: 0};
 let origin_radius = 0;
 
 let min_amount_of_points = 6;
-
-let donut_coefficient = 0.5;
+let coefficients = {};
+coefficients.donut_size = 0.5;
+coefficients.draw_path = true;
 let donut_min = 0;
 let donut_max = 0;
 let is_circle = false;
 
 let intersected_segments = [];
 
-canvas.onclick = ev => {
-    points.push(getMousePos(ev));
+function update() {
     calculate();
     clear();
-    draw_path();
+    if (coefficients.draw_path) draw_path();
     draw_intersections();
     // draw_max_radius();
     // draw_min_radius();
@@ -40,6 +40,7 @@ function dist(a, b) {
 }
 
 function calculate() {
+    if (points.length === 0) return;
     epicenter = {x: 0, y: 0};
 
     points.forEach(v => {
@@ -65,8 +66,8 @@ function calculate() {
         }
     });
 
-    donut_min = origin_radius * donut_coefficient;
-    donut_max = origin_radius + donut_min;
+    donut_min = origin_radius * coefficients.donut_size;
+    donut_max = origin_radius + origin_radius - donut_min;
 
     intersected_segments = [];
     find_intersects();

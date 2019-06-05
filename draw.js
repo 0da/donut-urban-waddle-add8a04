@@ -7,6 +7,11 @@ canvas.width = canvasTop.clientWidth;
 // noinspection JSSuspiciousNameCombination
 canvas.height = canvas.width;
 
+canvas.onclick = ev => {
+    points.push(getMousePos(ev));
+    update();
+};
+
 function draw_path() {
     if (points.length > 1) {
         context.strokeStyle = '#a9a9a9';
