@@ -32,8 +32,8 @@ function update() {
     draw_epicenter();
     draw_donut();
     draw_points();
-    highlight_bad_points()
-};
+    highlight_bad_points();
+}
 
 function dist(a, b) {
     return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2))
